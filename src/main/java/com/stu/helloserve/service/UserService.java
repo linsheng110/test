@@ -16,4 +16,10 @@ public interface UserService {
      * @return 操作结果
      */
     Result<String> login(UserDTO userDTO);
+    /**
+     * 根据 id 查询用户
+     * @param id 用户ID
+     * @return 结果
+     */
+    Result<String> getUserById(Long id);
 }
