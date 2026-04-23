@@ -22,4 +22,12 @@ public interface UserService {
      * @return 结果
      */
     Result<String> getUserById(Long id);
+
+    /**
+     * 获取核心用户分页列表
+     * @param pageNum 页码
+     * @param pageSize 每页大小
+     * @return 结果
+     */
+    Result<Object> getUserPage(Integer pageNum, Integer pageSize);
 }

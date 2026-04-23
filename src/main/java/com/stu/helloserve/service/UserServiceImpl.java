@@ -1,6 +1,7 @@
 package com.stu.helloserve.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.stu.helloserve.common.Result;
 import com.stu.helloserve.common.ResultCode;
 import com.stu.helloserve.dto.UserDTO;
@@ -62,5 +63,15 @@ public class UserServiceImpl implements UserService {
             return Result.error(ResultCode.USER_NOT_EXIST);
         }
         return Result.success(user.getUsername()); // 示例返回用户名，可按需调整返回内容
+    }
+
+    @Override
+    public Result<Object> getUserPage(Integer pageNum, Integer pageSize) {
+        Page<User> page = new Page<>(pageNum, pageSize);
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        // 这里可以添加核心用户的查询条件，例如按活跃度、等级等筛选
+        // queryWrapper.eq(User::getIsCore, true);
+        userMapper.selectPage(page, queryWrapper);
+        return Result.success(page);
     }
 }
