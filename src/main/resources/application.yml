@@ -1,0 +1,31 @@
+spring:
+  security:
+    user:
+      name: test
+      password: 123456
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: ls20041205
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+  ai:
+    openai:
+      api-key: ${API_KEY_deepseek:your-deepseek-api-key}
+      base-url: https://api.deepseek.com/v1
+      chat:
+        options:
+          model: deepseek-v4-flash
+
+security:
+  jwt:
+    secret: demo-jwt-secret-key-for-spring-security-2026
+    expiration-millis: 7200000
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
